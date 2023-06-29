@@ -1,0 +1,24 @@
+public class MinimumScore {
+    public static int minimumScore(int[] nums, int k) {
+        int minNum = Integer.MAX_VALUE;
+        int maxNum = Integer.MIN_VALUE;
+
+        for (int num : nums) {
+            minNum = Math.min(minNum, num);
+            maxNum = Math.max(maxNum, num);
+        }
+
+        int initialScore = maxNum - minNum;
+
+        if (k == 0) {
+            return initialScore;
+        }
+
+        int potentialMax = maxNum - k;
+        int potentialMin = minNum + k;
+        int potentialScore = potentialMax - potentialMin;
+
+        return Math.min(initialScore, potentialScore);
+  
+    }
+}
